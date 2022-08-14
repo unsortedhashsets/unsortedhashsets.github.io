@@ -22,7 +22,7 @@ import { RouteThreeComponent } from './route-three/route-three.component';
       { path: 'route-one', component: RouteOneComponent },
       { path: 'route-two', component: RouteTwoComponent },
       { path: 'route-three', component: RouteThreeComponent },
-      { path: '', redirectTo: 'route-one', pathMatch: 'full' },
+      { path: '', redirectTo: '/route-one', pathMatch: 'full' },
       { path: '**', component: PageNotFoundComponent }
     ]),
   ],
