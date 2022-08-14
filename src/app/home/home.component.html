@@ -1,0 +1,32 @@
+<div class="homebox">
+
+    <img class="userPicture" src="/assets/imgs/anon_user.jpg" alt="image">
+
+    <h1 class="userName" *ngIf="getScreenWidth > 700">
+        Username Usersurname
+    </h1>
+
+    <h1 class="userName" *ngIf="getScreenWidth < 701">
+        Username<br />Usersurname
+    </h1>
+
+    <h2 class="userFeatures" *ngIf="getScreenWidth > 700">
+        Genius * Billionaire * Playboy * Philanthropist
+    </h2>
+
+    <h2 class="userFeatures" *ngIf="getScreenWidth < 701">
+        Genius<br />Billionaire<br />Playboy<br />Philanthropist
+    </h2>
+
+
+    <nav>
+        <a class="button" routerLink="/route-two" routerLinkActive="activebutton" ariaCurrentWhenActive="page">
+            Route-two
+        </a> |
+        <a class="button" routerLink="/route-three" routerLinkActive="activebutton" ariaCurrentWhenActive="page">
+            Route-three
+        </a>
+    </nav>
+
+    <router-outlet></router-outlet>
+</div>

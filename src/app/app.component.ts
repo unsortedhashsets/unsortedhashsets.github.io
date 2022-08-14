@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ParticlesConfig } from 'src/app/particles-config';
+import { ParticlesConfig } from 'src/app/utils/particles-config';
 
 declare let particlesJS: any;
 
@@ -10,6 +10,7 @@ declare let particlesJS: any;
 })
 
 export class AppComponent implements OnInit {
+
   public ngOnInit(): void {
     this.invokeParticles();
   }
