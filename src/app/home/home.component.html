@@ -19,20 +19,32 @@
     </h2>
 
 
-    <nav *ngIf="getScreenWidth> 700">
-        <a class="button" routerLink="/route-two" routerLinkActive="activebutton" ariaCurrentWhenActive="page">
-            Route-two
-        </a> |
-        <a class="button" routerLink="/route-three" routerLinkActive="activebutton" ariaCurrentWhenActive="page">
-            Route-three
-        </a>
+    <nav class="navbar" *ngIf="getScreenWidth> 700">
+        <ul class="navbar-list">
+            <nav class="navbar-button left" routerLink="/home" routerLinkActive="active-navbar-button"
+                ariaCurrentWhenActive="page">
+                About
+            </nav>
+            <nav class="navbar-button" routerLink="/route-two" routerLinkActive="active-navbar-button"
+                ariaCurrentWhenActive="page">
+                Resume
+            </nav>
+            <nav class="navbar-button" routerLink="/route-three" routerLinkActive="active-navbar-button"
+                ariaCurrentWhenActive="page">
+                Portfolio
+            </nav>
+            <nav class="navbar-button right" routerLink="/route-four" routerLinkActive="active-navbar-button"
+                ariaCurrentWhenActive="page">
+                Contact
+            </nav>
+        </ul>
     </nav>
 
 </div>
 
 <nav class="navbar" *ngIf="getScreenWidth< 701">
     <ul class="navbar-list">
-        <nav class="navbar-button" routerLink="/home" routerLinkActive="active-navbar-button"
+        <nav class="navbar-button left" routerLink="/home" routerLinkActive="active-navbar-button"
             ariaCurrentWhenActive="page">
             About
         </nav>
@@ -44,7 +56,7 @@
             ariaCurrentWhenActive="page">
             Portfolio
         </nav>
-        <nav class="navbar-button" routerLink="/route-four" routerLinkActive="active-navbar-button"
+        <nav class="navbar-button right" routerLink="/route-four" routerLinkActive="active-navbar-button"
             ariaCurrentWhenActive="page">
             Contact
         </nav>
