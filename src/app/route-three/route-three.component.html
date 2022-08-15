@@ -1,8 +1,29 @@
 <div class="tmpbox">
+    <nav class="navbar" *ngIf="getScreenWidth> 768">
+        <ul class="navbar-list">
+            <nav class="navbar-button left" routerLink="/home" routerLinkActive="active-navbar-button"
+                ariaCurrentWhenActive="page">
+                About
+            </nav>
+            <nav class="navbar-button" routerLink="/route-two" routerLinkActive="active-navbar-button"
+                ariaCurrentWhenActive="page">
+                Resume
+            </nav>
+            <nav class="navbar-button" routerLink="/route-three" routerLinkActive="active-navbar-button"
+                ariaCurrentWhenActive="page">
+                Portfolio
+            </nav>
+            <nav class="navbar-button right" routerLink="/route-four" routerLinkActive="active-navbar-button"
+                ariaCurrentWhenActive="page">
+                Contact
+            </nav>
+
+        </ul>
+    </nav>
     <h1 style="color: white;">Portfolio</h1>
 </div>
 
-<nav class="navbar" *ngIf="getScreenWidth< 701">
+<nav class="navbar" *ngIf="getScreenWidth< 769">
     <ul class="navbar-list">
         <nav class="navbar-button left" routerLink="/home" routerLinkActive="active-navbar-button"
             ariaCurrentWhenActive="page">

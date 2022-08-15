@@ -2,24 +2,24 @@
 
     <img class="userPicture" src="/assets/imgs/anon_user.jpg" alt="image">
 
-    <h1 class="userName" *ngIf="getScreenWidth> 700">
+    <h1 class="userName" *ngIf="getScreenWidth> 768">
         Username Usersurname
     </h1>
 
-    <h1 class="userName" *ngIf="getScreenWidth< 701">
+    <h1 class="userName" *ngIf="getScreenWidth< 769">
         Username<br />Usersurname
     </h1>
 
-    <h2 class="userFeatures" *ngIf="getScreenWidth > 700">
+    <h2 class="userFeatures" *ngIf="getScreenWidth > 768">
         Genius * Billionaire * Playboy * Philanthropist
     </h2>
 
-    <h2 class="userFeatures" *ngIf="getScreenWidth< 701">
+    <h2 class="userFeatures" *ngIf="getScreenWidth< 769">
         Genius<br />Billionaire<br />Playboy<br />Philanthropist
     </h2>
 
 
-    <nav class="navbar" *ngIf="getScreenWidth> 700">
+    <nav class="navbar" *ngIf="getScreenWidth> 768">
         <ul class="navbar-list">
             <nav class="navbar-button left" routerLink="/home" routerLinkActive="active-navbar-button"
                 ariaCurrentWhenActive="page">
@@ -42,7 +42,7 @@
 
 </div>
 
-<nav class="navbar" *ngIf="getScreenWidth< 701">
+<nav class="navbar" *ngIf="getScreenWidth< 769">
     <ul class="navbar-list">
         <nav class="navbar-button left" routerLink="/home" routerLinkActive="active-navbar-button"
             ariaCurrentWhenActive="page">
