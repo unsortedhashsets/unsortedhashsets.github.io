@@ -1,11 +1,11 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.less']
+  selector: 'app-init',
+  templateUrl: './init.component.html',
+  styleUrls: ['./init.component.less']
 })
-export class HomeComponent implements OnInit {
+export class InitComponent implements OnInit {
 
   constructor() { }
 
