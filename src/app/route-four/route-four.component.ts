@@ -2,10 +2,10 @@ import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-route-three',
-  templateUrl: './route-three.component.html',
-  styleUrls: ['./route-three.component.less']
+  templateUrl: './route-four.component.html',
+  styleUrls: ['./route-four.component.less']
 })
-export class RouteThreeComponent implements OnInit {
+export class RouteFourComponent implements OnInit {
 
   constructor() { }
 

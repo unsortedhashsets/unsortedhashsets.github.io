@@ -2,11 +2,11 @@
 
     <img class="userPicture" src="/assets/imgs/anon_user.jpg" alt="image">
 
-    <h1 class="userName" *ngIf="getScreenWidth > 700">
+    <h1 class="userName" *ngIf="getScreenWidth> 700">
         Username Usersurname
     </h1>
 
-    <h1 class="userName" *ngIf="getScreenWidth < 701">
+    <h1 class="userName" *ngIf="getScreenWidth< 701">
         Username<br />Usersurname
     </h1>
 
@@ -14,12 +14,12 @@
         Genius * Billionaire * Playboy * Philanthropist
     </h2>
 
-    <h2 class="userFeatures" *ngIf="getScreenWidth < 701">
+    <h2 class="userFeatures" *ngIf="getScreenWidth< 701">
         Genius<br />Billionaire<br />Playboy<br />Philanthropist
     </h2>
 
 
-    <nav>
+    <nav *ngIf="getScreenWidth> 700">
         <a class="button" routerLink="/route-two" routerLinkActive="activebutton" ariaCurrentWhenActive="page">
             Route-two
         </a> |
@@ -28,5 +28,25 @@
         </a>
     </nav>
 
-    <router-outlet></router-outlet>
 </div>
+
+<nav class="navbar" *ngIf="getScreenWidth< 701">
+    <ul class="navbar-list">
+        <nav class="navbar-button" routerLink="/home" routerLinkActive="active-navbar-button"
+            ariaCurrentWhenActive="page">
+            About
+        </nav>
+        <nav class="navbar-button" routerLink="/route-two" routerLinkActive="active-navbar-button"
+            ariaCurrentWhenActive="page">
+            Resume
+        </nav>
+        <nav class="navbar-button" routerLink="/route-three" routerLinkActive="active-navbar-button"
+            ariaCurrentWhenActive="page">
+            Portfolio
+        </nav>
+        <nav class="navbar-button" routerLink="/route-four" routerLinkActive="active-navbar-button"
+            ariaCurrentWhenActive="page">
+            Contact
+        </nav>
+    </ul>
+</nav>
