@@ -1,3 +1,5 @@
+var backgroundColor = getComputedStyle(document.body).getPropertyValue('--backgroundColor')
+
 export const ParticlesConfig = {
     particles: {
         number: { value: 80, density: { enable: true, value_area: 1400 } },
@@ -51,5 +53,5 @@ export const ParticlesConfig = {
             remove: { particles_nb: 2 }
         }
     },
-    retina_detect: true
+    retina_detect: true,
 };

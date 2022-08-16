@@ -1,0 +1,54 @@
+<body>
+    <div class="tmpbox">
+        <nav class="navbar" *ngIf="getScreenWidth> 768">
+            <ul class="navbar-list">
+                <nav class="navbar-button left" routerLink="/about" routerLinkActive="active-navbar-button"
+                    ariaCurrentWhenActive="page">
+                    About
+                </nav>
+                <nav class="navbar-button" routerLink="/resume" routerLinkActive="active-navbar-button"
+                    ariaCurrentWhenActive="page">
+                    Resume
+                </nav>
+                <nav class="navbar-button" routerLink="/portfolio" routerLinkActive="active-navbar-button"
+                    ariaCurrentWhenActive="page">
+                    Portfolio
+                </nav>
+                <nav class="navbar-button right" routerLink="/contact" routerLinkActive="active-navbar-button"
+                    ariaCurrentWhenActive="page">
+                    Contact
+                </nav>
+
+            </ul>
+        </nav>
+
+        <div>
+            <app-about *ngIf="child === '/about'"></app-about>
+            <app-contact *ngIf="child === '/contact'"></app-contact>
+            <app-portfolio *ngIf="child === '/portfolio'"></app-portfolio>
+            <app-resume *ngIf="child === '/resume'"></app-resume>
+        </div>
+    </div>
+</body>
+
+<footer>
+    <nav class="navbar" *ngIf="getScreenWidth< 769">
+        <ul class="navbar-list">
+            <nav class="navbar-button left" routerLink="/about" routerLinkActive="active-navbar-button"
+                ariaCurrentWhenActive="page">
+                About
+            </nav>
+            <nav class="navbar-button" routerLink="/resume" routerLinkActive="active-navbar-button"
+                ariaCurrentWhenActive="page">
+                Resume
+            </nav>
+            <nav class="navbar-button" routerLink="/portfolio" routerLinkActive="active-navbar-button"
+                ariaCurrentWhenActive="page">
+                Portfolio
+            </nav>
+            <nav class="navbar-button right" routerLink="/contact" routerLinkActive="active-navbar-button"
+                ariaCurrentWhenActive="page">
+                Contact
+            </nav>
+        </ul>
+    </nav>

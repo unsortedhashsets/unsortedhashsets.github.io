@@ -1,8 +1,8 @@
 @media screen and (max-width: 768px) {
 
     .tmpbox {   
-        background: #202022;
-        border: 1px solid #383838;
+        background-color: var(--primaryColor);
+        border: 1px solid var(--secondaryColor);
         border-radius: 16px;
         position: fixed;
         top: 25px;
@@ -14,13 +14,14 @@
     }
 
     .userName {
-        color: floralwhite; 
+        color: var(--textColor);
+        font-family: var(--fontType);
         font-size: 40px; 
         margin: 0px;
     }
 
     .userFeatures{
-        color: floralwhite;
+        color: var(--textColor);
         font-size: 20px; 
     }
 
@@ -39,21 +40,13 @@
         width: 100%;
         padding: 0px;
         margin-bottom: 0;
+        border-top: 1px solid var(--secondaryColor);
+        border-radius: 16px 16px 0 0;
     }
 
     .navbar-button {
-        color: #d3d3d3;
-        background-color: #383838;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        padding: 20px;
-        opacity: 0.8;
-    }
-
-    .navbar-button {
-        color: #d3d3d3;
-        background-color: #383838;
+        color: var(--textColor);
+        background-color: var(--primaryColor);
         width: 100%;
         height: 100%;
         text-align: center;
@@ -75,8 +68,8 @@
 @media screen and (min-width: 769px) {
 
     .tmpbox {   
-        background: #202022;
-        border: 1px solid #383838;
+        background: var(--primaryColor);
+        border: 1px solid var(--secondaryColor);
         border-radius: 16px;
         position: fixed;
         top: 25px;
@@ -93,7 +86,7 @@
         right: 0;
         width: 50%;
         border-radius: 0 16px 0 16px;
-        border: 1px solid #383838;
+        border: 1px solid var(--secondaryColor);
       }
 
     .navbar-list {
@@ -107,8 +100,8 @@
     }
     
     .navbar-button {
-        color: #d3d3d3;
-        background-color: #383838;
+        color: var(--textColor);
+        background-color: var(--primaryColor);
         width: 100%;
         height: 100%;
         text-align: center;
@@ -126,25 +119,25 @@
     }
 
     .userName {
-        color: floralwhite; 
+        color: var(--textColor); 
         font-size: 60px; 
         margin: 0px;
     }
 
     .userFeatures{
-        color: floralwhite;
+        color: var(--textColor);
         font-size: 30px; 
     }
 
 }
 
-.navbar-button:hover { background-color: #666666; }
-.navbar-button:focus { background-color: #666666; }
+.navbar-button:hover { filter: brightness(1.5); }
+.navbar-button:focus { filter: brightness(1.5); }
 
 .active-navbar-button {
-    background-color: #666666;
-    box-shadow: 0  
+    filter: brightness(1.5);
 }
+
 
 .userPicture {
     height: 10em;
