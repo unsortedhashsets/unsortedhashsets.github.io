@@ -1,16 +1,57 @@
 @media screen and (max-width: 768px) {
 
-    .tmpbox {   
+    .tmpbox-user {   
         background-color: var(--primaryColor);
         border: 1px solid var(--secondaryColor);
         border-radius: 16px;
-        position: fixed;
         top: 25px;
         left: 25px;
         bottom: 85px;
         right: 25px;
         padding: 25px;
+    }
+
+    .tmpbox-content {   
+        background-color: var(--primaryColor);
+        border: 1px solid var(--secondaryColor);
+        border-radius: 16px;
+        left: 25px;
+        bottom: 85px;
+        right: 25px;
+        margin-top: 25px;
+        padding: 25px;
+        padding-top: 10px;
         overflow: auto;
+    }
+
+    .page-title-box{
+        position: relative;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        min-height: 60px;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .page-title{
+        position: absolute;
+        text-align: center;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .page-title-hr{
+        position: absolute;
+        top: 4px;
+        height: 6px;
+        border: 0px;
+        border-radius: 10px;
+        margin-top: 50px;
+        width: 75%;
+        left: 12.5%;
+        background: linear-gradient(90deg, var(--secondaryColor) 35%, var(--textColor)70%);
     }
 
     .userName {
@@ -42,6 +83,7 @@
         margin-bottom: 0;
         border-top: 1px solid var(--secondaryColor);
         border-radius: 16px 16px 0 0;
+        backdrop-filter: blur(10px);
     }
 
     .navbar-button {
@@ -51,7 +93,7 @@
         height: 100%;
         text-align: center;
         padding: 20px;
-        opacity: 0.8;
+        opacity: 0.5;
     }
 
     .navbar-button.left{
@@ -62,34 +104,88 @@
         border-radius: 0 16px 0 0;
     }
 
+    .content-box{
+        padding-top: 10px;
+    }
     
 }
 
 @media screen and (min-width: 769px) {
 
-    .tmpbox {   
+    .main-view {   
+        max-width: 1200px;
+        margin-inline: auto;
+        justify-content: content;
+        align-items: stretch;
+    }
+    
+    .tmpbox-user {   
+        position: relative;
         background: var(--primaryColor);
         border: 1px solid var(--secondaryColor);
         border-radius: 16px;
-        position: fixed;
-        top: 25px;
-        left: 25px;
-        bottom: 25px;
-        right: 25px;
+        margin: 25px;
+        margin-left: 0px;
         padding: 25px;
-        overflow: auto;
+        max-width: 800px;
+        min-width: 600px;
+        transition: 0.25s ease;
     }
-    
+
+    .tmpbox-content {  
+        position: relative;
+        background: var(--primaryColor);
+        border: 1px solid var(--secondaryColor);
+        border-radius: 16px;
+        margin: 25px;
+        margin-left: 0px;
+        padding: 25px;
+        max-width: 800px;
+        min-width: 600px;
+    }
+
+    .page-title-box{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        min-height: 60px;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+    }
+
+    .page-title{
+        position: absolute;
+        text-align: center;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .page-title-hr{
+        position: absolute;
+        top: 4px;
+        height: 6px;
+        border: 0px;
+        border-radius: 10px;
+        margin-top: 50px;
+        width: 75%;
+        left: 12.5%;
+        background: linear-gradient(90deg, var(--secondaryColor) 35%, var(--textColor)70%);
+    }
+
     .navbar {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 0px;
+        right: 0px;
         width: 50%;
+        min-height: 60px;
         border-radius: 0 16px 0 16px;
-        border: 1px solid var(--secondaryColor);
+        border-bottom: 1px solid var(--secondaryColor);
+        border-left: 1px solid var(--secondaryColor);
       }
 
     .navbar-list {
+        position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -129,6 +225,44 @@
         font-size: 30px; 
     }
 
+    .content-box{
+        padding-top: 50px;
+    }
+
+    @media (min-width: 1001px) {
+        .main-view {   
+            max-width: 1200px;
+            margin-inline: auto;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+        }
+        
+        .tmpbox-user {   
+            position: sticky;
+            background: var(--primaryColor);
+            border: 1px solid var(--secondaryColor);
+            border-radius: 16px;
+            margin: 25px;
+            top: 25px;
+            min-width: 150px;
+            max-width: 150px;
+            max-height: 400px;
+            transition: 0.25s ease;
+        }
+    
+        .tmpbox-content {  
+            position: relative;
+            background: var(--primaryColor);
+            border: 1px solid var(--secondaryColor);
+            border-radius: 16px;
+            margin: 25px;
+            margin-left: 0px;
+            padding: 25px;
+            max-width: 900px;
+            min-width: 700px;
+        }
+    }
 }
 
 .navbar-button:hover { filter: brightness(1.5); }
@@ -140,6 +274,7 @@
 
 
 .userPicture {
-    height: 10em;
+    height: 5em;
     border-radius: 25%; //50% to make in round
 }
+

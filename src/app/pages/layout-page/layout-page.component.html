@@ -1,32 +1,43 @@
 <body>
-    <div class="tmpbox">
-        <nav class="navbar" *ngIf="getScreenWidth> 768">
-            <ul class="navbar-list">
-                <nav class="navbar-button left" routerLink="/about" routerLinkActive="active-navbar-button"
-                    ariaCurrentWhenActive="page">
-                    About
-                </nav>
-                <nav class="navbar-button" routerLink="/resume" routerLinkActive="active-navbar-button"
-                    ariaCurrentWhenActive="page">
-                    Resume
-                </nav>
-                <nav class="navbar-button" routerLink="/portfolio" routerLinkActive="active-navbar-button"
-                    ariaCurrentWhenActive="page">
-                    Portfolio
-                </nav>
-                <nav class="navbar-button right" routerLink="/contact" routerLinkActive="active-navbar-button"
-                    ariaCurrentWhenActive="page">
-                    Contact
-                </nav>
+    <div class="main-view">
+        <div class="tmpbox-user">
+            <img class="userPicture" src="/assets/imgs/anon_user.jpg" alt="image">
+        </div>
+        <div class="tmpbox-content">
+            <div class="page-title-box">
+                <h1 class="page-title" style="color: white;" *ngIf="child === '/about'">About</h1>
+                <h1 class="page-title" style="color: white;" *ngIf="child === '/contact'">Contact</h1>
+                <h1 class="page-title" style="color: white;" *ngIf="child === '/portfolio'">Portfolio</h1>
+                <h1 class="page-title" style="color: white;" *ngIf="child === '/resume'">Resume</h1>
+                <hr class="page-title-hr" align="center">
+            </div>
+            <nav class="navbar" *ngIf="getScreenWidth> 768">
+                <ul class="navbar-list">
+                    <nav class="navbar-button left" routerLink="/about" routerLinkActive="active-navbar-button"
+                        ariaCurrentWhenActive="page">
+                        About
+                    </nav>
+                    <nav class="navbar-button" routerLink="/resume" routerLinkActive="active-navbar-button"
+                        ariaCurrentWhenActive="page">
+                        Resume
+                    </nav>
+                    <nav class="navbar-button" routerLink="/portfolio" routerLinkActive="active-navbar-button"
+                        ariaCurrentWhenActive="page">
+                        Portfolio
+                    </nav>
+                    <nav class="navbar-button right" routerLink="/contact" routerLinkActive="active-navbar-button"
+                        ariaCurrentWhenActive="page">
+                        Contact
+                    </nav>
 
-            </ul>
-        </nav>
-
-        <div>
-            <app-about *ngIf="child === '/about'"></app-about>
-            <app-contact *ngIf="child === '/contact'"></app-contact>
-            <app-portfolio *ngIf="child === '/portfolio'"></app-portfolio>
-            <app-resume *ngIf="child === '/resume'"></app-resume>
+                </ul>
+            </nav>
+            <div class="content-box">
+                <app-about *ngIf="child === '/about'"></app-about>
+                <app-contact *ngIf="child === '/contact'"></app-contact>
+                <app-portfolio *ngIf="child === '/portfolio'"></app-portfolio>
+                <app-resume *ngIf="child === '/resume'"></app-resume>
+            </div>
         </div>
     </div>
 </body>
