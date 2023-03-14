@@ -8,11 +8,13 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-image: url(https://s3.eu-west-1.amazonaws.com/unsortedhashsets.github.io/5e87e737ee7085fccd02c10d_pattern-grey.svg);
+  background-position: 0px 0px;
+  background-size: 6px;
 }
 
 code {
