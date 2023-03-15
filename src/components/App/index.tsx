@@ -40,10 +40,14 @@ const App: React.FC = () => {
 
     useEffect(() => {
         if (live) {
-            const timer = setInterval(() => {
-                setTime(time + 1);
-            }, 1000);
-            return () => clearInterval(timer);
+            if (time === 999) {
+                return;
+            } else {
+                const timer = setInterval(() => {
+                    setTime(time + 1);
+                }, 1000);
+                return () => clearInterval(timer);
+            }
         }
     }, [live, time]);
 
@@ -102,18 +106,17 @@ const App: React.FC = () => {
             setCells(newCells);
         }
 
-        // Check if the game has been won
         let safeOpenCellsExist = false;
         for (let i = 0; i < cells.length; i++) {
             for (let j = 0; j < cells[i].length; j++) {
-                if (cells[i][j].value !== CellValue.mine && cells[i][j].state === CellState.open) {
+                if (cells[i][j].value !== CellValue.mine && cells[i][j].state === CellState.open && cells[i][j].state !== CellState.question) {
                     safeOpenCellsExist = true;
                     break;
                 }
             }
         }
 
-        if (!safeOpenCellsExist) {
+        if (!safeOpenCellsExist && mines === 0) {
             setHasWon(true);
             setCells(disableAllCells(newCells));
         }
@@ -125,6 +128,10 @@ const App: React.FC = () => {
     ) => (e: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
         e.preventDefault();
 
+        if (hasLost || hasWon) {
+            return;
+        }
+        
         if (!live) {
             setLive(true);
         }
@@ -146,7 +153,7 @@ const App: React.FC = () => {
         } else if (currentCell.state === CellState.question) {
             currentCells[rowParam][colParam].state = CellState.open;
             currentCells[rowParam][colParam].enabled = true;
-        }            
+        }        
     };
     
     const renderCells = (): React.ReactNode => {
