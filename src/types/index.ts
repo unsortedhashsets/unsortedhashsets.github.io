@@ -16,7 +16,6 @@ export enum CellState {
     open,
     visible,
     flagged,
-    question,
     exploded
 }
 

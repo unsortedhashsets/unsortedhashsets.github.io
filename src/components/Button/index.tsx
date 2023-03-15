@@ -26,8 +26,6 @@ const Button: React.FC<ButtonProps> = ( {row, col, onClick, onContext, red, enab
             }
         } else if (state === CellState.flagged) {
             return <span role="img" aria-label="flag">🚩</span>;
-        } else if (state === CellState.question) {
-            return <span role="img" aria-label="question">❓</span>;
         } else if (state === CellState.exploded) {
             return <span role="img" aria-label="exploded">💥</span>;
         } else {

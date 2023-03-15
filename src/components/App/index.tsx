@@ -87,7 +87,7 @@ const App: React.FC = () => {
         let newCells = cells.slice();
         const currentCell = cells[rowParam][colParam];
 
-        if ([CellState.flagged, CellState.visible, CellState.question].includes(currentCell.state)) {
+        if ([CellState.flagged, CellState.visible].includes(currentCell.state)) {
             return;
         }
 
@@ -109,7 +109,7 @@ const App: React.FC = () => {
         let safeOpenCellsExist = false;
         for (let i = 0; i < cells.length; i++) {
             for (let j = 0; j < cells[i].length; j++) {
-                if (cells[i][j].value !== CellValue.mine && cells[i][j].state === CellState.open && cells[i][j].state !== CellState.question) {
+                if (cells[i][j].value !== CellValue.mine && cells[i][j].state === CellState.open) {
                     safeOpenCellsExist = true;
                     break;
                 }
@@ -147,10 +147,9 @@ const App: React.FC = () => {
             if (mines > -99){
                 setMines(mines - 1);
             }
+            
         } else if (currentCell.state === CellState.flagged) {
-            currentCells[rowParam][colParam].state = CellState.question;
             setMines(mines + 1);
-        } else if (currentCell.state === CellState.question) {
             currentCells[rowParam][colParam].state = CellState.open;
             currentCells[rowParam][colParam].enabled = true;
         }        
