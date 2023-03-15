@@ -116,7 +116,7 @@ const App: React.FC = () => {
             }
         }
 
-        if (!safeOpenCellsExist && mines === 0) {
+        if (!safeOpenCellsExist) {
             setHasWon(true);
             setCells(disableAllCells(newCells));
         }
