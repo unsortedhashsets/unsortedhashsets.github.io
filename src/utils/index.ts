@@ -34,6 +34,7 @@ export const generateCells = () => {
                 state: CellState.open,
                 row,
                 col,
+                enabled: true,
             });
         }
     }
@@ -79,6 +80,7 @@ export const openMultipleCells = (cells: Cell[][], rowParam: number, colParam: n
     const currentCell = cells[rowParam][colParam];
     let newCells = cells.slice();
     newCells[rowParam][colParam].state = CellState.visible;
+    newCells[rowParam][colParam].enabled = false;
 
     if (currentCell.value !== CellValue.none) return cells;
 
@@ -89,5 +91,16 @@ export const openMultipleCells = (cells: Cell[][], rowParam: number, colParam: n
         }
     });
 
+    return newCells;
+}
+
+export const disableAllCells = (cells: Cell[][]) => {
+    let newCells = cells.slice();
+    newCells = newCells.map(row => row.map(cell => {
+        return {
+            ...cell,
+            enabled: false,
+        };
+    }));
     return newCells;
 }

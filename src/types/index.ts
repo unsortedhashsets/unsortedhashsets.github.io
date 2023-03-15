@@ -20,7 +20,9 @@ export enum CellState {
     exploded
 }
 
-export type Cell = { value: CellValue; state: CellState; row: number; col: number; red?: boolean };
+export type Cell = {
+    enabled: boolean; value: CellValue; state: CellState; row: number; col: number; red?: boolean
+};
 
 export enum Face {
     smile = '🙂',

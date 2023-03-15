@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { generateCells, openMultipleCells } from "../../utils";
+import { disableAllCells, generateCells, openMultipleCells } from "../../utils";
 import Button from "../Button";
 import NumberDisplay from "../NumberDisplay";
 import { CellState, CellValue, Face } from "../../types";
@@ -80,7 +80,7 @@ const App: React.FC = () => {
             setLive(true);
         }
 
-        const newCells = cells.slice();
+        let newCells = cells.slice();
         const currentCell = cells[rowParam][colParam];
 
         if ([CellState.flagged, CellState.visible, CellState.question].includes(currentCell.state)) {
@@ -92,11 +92,13 @@ const App: React.FC = () => {
             newCells[rowParam][colParam].red = true;
             showAllMines();
             setHasLost(true);
+            setCells(disableAllCells(newCells));
             return;
         } else if (currentCell.value === CellValue.none) {
             openMultipleCells(newCells, rowParam, colParam);
         } else {
             newCells[rowParam][colParam].state = CellState.visible;
+            newCells[rowParam][colParam].enabled = false;
             setCells(newCells);
         }
 
@@ -113,6 +115,7 @@ const App: React.FC = () => {
 
         if (!safeOpenCellsExist) {
             setHasWon(true);
+            setCells(disableAllCells(newCells));
         }
     };
 
@@ -133,6 +136,7 @@ const App: React.FC = () => {
             return;
         } else if (currentCell.state === CellState.open) {
             currentCells[rowParam][colParam].state = CellState.flagged;
+            currentCells[rowParam][colParam].enabled = false;
             if (mines > -99){
                 setMines(mines - 1);
             }
@@ -141,6 +145,7 @@ const App: React.FC = () => {
             setMines(mines + 1);
         } else if (currentCell.state === CellState.question) {
             currentCells[rowParam][colParam].state = CellState.open;
+            currentCells[rowParam][colParam].enabled = true;
         }            
     };
     
@@ -153,6 +158,7 @@ const App: React.FC = () => {
                 row={rowIndex}
                 col={colIndex}
                 red={cell.red}
+                enabled={cell.enabled}
                 onClick={handleCellClick}
                 onContext={handleCellContext}
             />;}

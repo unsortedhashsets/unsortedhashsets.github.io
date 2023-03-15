@@ -2,12 +2,15 @@
 
 .Button {
     @include borders;
-    @include button;
     width: 30px;
     height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &.enabled {
+        @include button;
+    }
 
     &.visible {
         border-color: #7b7b7b;
