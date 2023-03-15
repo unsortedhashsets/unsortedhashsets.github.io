@@ -11,22 +11,32 @@ const App: React.FC = () => {
     const [cells, setCells] = useState(generateCells());
     const [face, setFace] = useState<Face>(Face.smile);
     const [time, setTime] = useState<number>(0);
-    const [score, setScore] = useState<number>(0);
     const [live, setLive] = useState<boolean>(false);
     const [mines, setMines] = useState<number>(NO_OF_MINES);
+    const [hasLost, setHasLost] = useState<boolean>(false);
+    const [hasWon, setHasWon] = useState<boolean>(false);
 
     useEffect(() => {
-        const handleMouseDown = (e: MouseEvent) => {
-            setFace(Face.oh);
-        };
-        window.addEventListener("mousedown", handleMouseDown);
-        window.addEventListener("mouseup", () => setFace(Face.smile));
+        if (!hasLost && !hasWon) {
+            const handleMouseDown = (): void => {
+                setFace(Face.oh);
+            };
+        
+            const handleMouseUp = (): void => {
+                setFace(Face.smile);
+            };
+            // add event listener to buttons find by class Button
+            const Body = document.getElementsByClassName("Body")[0];
 
-        return () => {
-            window.removeEventListener("mousedown", handleMouseDown);
-            window.removeEventListener("mouseup", () => setFace(Face.smile));
+            Body.addEventListener("mouseover", handleMouseDown);
+            Body.addEventListener("mouseout", handleMouseUp);
+        
+            return () => {
+                Body.removeEventListener("mouseover", handleMouseDown);
+                Body.removeEventListener("mouseout", handleMouseUp);
+            };
         }
-    }, []);
+      }, [hasLost, hasWon]);
 
     useEffect(() => {
         if (live) {
@@ -37,7 +47,35 @@ const App: React.FC = () => {
         }
     }, [live, time]);
 
+    useEffect(() => {
+        if (hasLost) {
+            setLive(false);
+            setFace(Face.lost);
+        }
+    }, [hasLost]);
+
+    useEffect(() => {
+        if (hasWon) {
+            setLive(false);
+            setFace(Face.won);
+        }
+    }, [hasWon]);
+
+    const handleFaceClick = (): void => {
+        setLive(false);
+        setTime(0);
+        setCells(generateCells());
+        setHasLost(false);
+        setHasWon(false);
+        setMines(NO_OF_MINES);
+        setFace(Face.smile);
+    };
+
     const handleCellClick = (rowParam: number, colParam: number) => (): void => {
+        if (hasLost || hasWon) {
+            return;
+        }
+
         if (!live) {
             setLive(true);
         }
@@ -50,15 +88,31 @@ const App: React.FC = () => {
         }
 
         if (currentCell.value === CellValue.mine) {
-            // TODO: handle game over
             currentCell.state = CellState.exploded;
+            newCells[rowParam][colParam].red = true;
+            showAllMines();
+            setHasLost(true);
+            return;
         } else if (currentCell.value === CellValue.none) {
-            // TODO: reveal all cells around
             openMultipleCells(newCells, rowParam, colParam);
         } else {
-            // TODO: reveal cell
             newCells[rowParam][colParam].state = CellState.visible;
             setCells(newCells);
+        }
+
+        // Check if the game has been won
+        let safeOpenCellsExist = false;
+        for (let i = 0; i < cells.length; i++) {
+            for (let j = 0; j < cells[i].length; j++) {
+                if (cells[i][j].value !== CellValue.mine && cells[i][j].state === CellState.open) {
+                    safeOpenCellsExist = true;
+                    break;
+                }
+            }
+        }
+
+        if (!safeOpenCellsExist) {
+            setHasWon(true);
         }
     };
 
@@ -98,17 +152,28 @@ const App: React.FC = () => {
                 value={cell.value}
                 row={rowIndex}
                 col={colIndex}
+                red={cell.red}
                 onClick={handleCellClick}
                 onContext={handleCellContext}
             />;}
     ));}
+        
+    const showAllMines = (): void => {
+        const newCells = cells.slice();
+        newCells.forEach(row => row.forEach(cell => {
+            if (cell.value === CellValue.mine && cell.state !== CellState.exploded) {
+                cell.state = CellState.visible;
+            }
+        }));
+        setCells(newCells);
+    };
 
     return (
         <div className="App">
             <div className="Header">
                 <NumberDisplay value={mines} />
                 <div className="Face">
-                    <span role="img" arial-label="face">
+                    <span role="img" arial-label="face" onClick={handleFaceClick}>
                         {face}
                     </span>
                 </div>
