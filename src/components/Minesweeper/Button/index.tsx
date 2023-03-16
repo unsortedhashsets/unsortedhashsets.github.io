@@ -1,5 +1,5 @@
 import React from "react";
-import { CellState, CellValue } from "../../types";
+import { CellState, CellValue } from "../types";
 
 import "./Button.scss";
 

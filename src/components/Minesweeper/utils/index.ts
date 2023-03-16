@@ -104,3 +104,23 @@ export const disableAllCells = (cells: Cell[][]) => {
     }));
     return newCells;
 }
+
+export const showAllMines = (cells: Cell[][]) => {
+    const newCells = cells.slice();
+    newCells.forEach(row => row.forEach(cell => {
+        if (cell.value === CellValue.mine && cell.state !== CellState.exploded) {
+            cell.state = CellState.visible;
+        }
+    }));
+    return newCells;
+};
+
+export const flagUnsafeCells = (cells: Cell[][]) => {
+    const newCells = cells.slice();
+    newCells.forEach(row => row.forEach(cell => {
+        if (cell.value === CellValue.mine && cell.state !== CellState.flagged) {
+            cell.state = CellState.flagged;
+        }
+    }));
+    return newCells;
+};

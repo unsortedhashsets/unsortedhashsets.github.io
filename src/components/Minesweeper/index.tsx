@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
-import { disableAllCells, generateCells, openMultipleCells } from "../../utils";
-import Button from "../Button";
-import NumberDisplay from "../NumberDisplay";
-import { CellState, CellValue, Face } from "../../types";
+import { disableAllCells, flagUnsafeCells, generateCells, openMultipleCells, showAllMines } from "../../components/Minesweeper/utils";
+import Button from "./Button";
+import NumberDisplay from "./NumberDisplay";
+import { CellState, CellValue, Face } from "./types";
 
-import "./App.scss";
-import { NO_OF_MINES } from "../../constants";
+import "./Minesweeper.scss";
+import { NO_OF_MINES } from "./constants";
 
-const App: React.FC = () => {
+const Minesweeper: React.FC = () => {
     const [cells, setCells] = useState(generateCells());
     const [face, setFace] = useState<Face>(Face.smile);
     const [time, setTime] = useState<number>(0);
@@ -94,7 +94,7 @@ const App: React.FC = () => {
         if (currentCell.value === CellValue.mine) {
             currentCell.state = CellState.exploded;
             newCells[rowParam][colParam].red = true;
-            showAllMines();
+            setCells(showAllMines(newCells));
             setHasLost(true);
             setCells(disableAllCells(newCells));
             return;
@@ -118,6 +118,7 @@ const App: React.FC = () => {
 
         if (!safeOpenCellsExist) {
             setHasWon(true);
+            setCells(flagUnsafeCells(newCells));
             setCells(disableAllCells(newCells));
         }
     };
@@ -170,16 +171,6 @@ const App: React.FC = () => {
             />;}
     ));}
         
-    const showAllMines = (): void => {
-        const newCells = cells.slice();
-        newCells.forEach(row => row.forEach(cell => {
-            if (cell.value === CellValue.mine && cell.state !== CellState.exploded) {
-                cell.state = CellState.visible;
-            }
-        }));
-        setCells(newCells);
-    };
-
     return (
         <div className="App">
             <div className="Header">
@@ -198,4 +189,4 @@ const App: React.FC = () => {
     );
 };
 
-export default App;
+export default Minesweeper;
