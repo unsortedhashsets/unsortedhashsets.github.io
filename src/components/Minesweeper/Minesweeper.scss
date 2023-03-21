@@ -1,13 +1,12 @@
 @import './styles/index.scss';
 
-.App {
+.ms-app {
     @include borders;
     background: #c2c2c2;
     padding: 16px;
-    box-shadow: 8px 8px 0 0 #000;
 }
 
-.Header {
+.ms-header {
     @include borders(#7b7b7b, #fff);
     display: flex;
     justify-content: space-between;
@@ -16,7 +15,7 @@
     padding: 10px 12px;
 }
 
-.Body {
+.ms-body {
     @include borders(#7b7b7b, #fff);
     margin-top: 16px;
     display: grid; 
@@ -24,7 +23,7 @@
     grid-template-columns: repeat(9, 1fr);
 }
 
-.Face {
+.ms-face {
     @include borders;
     @include button;
     width: 52px;

@@ -35,7 +35,7 @@ const Button: React.FC<ButtonProps> = ( {row, col, onClick, onContext, red, enab
 
     return (
         <div 
-            className={`Button ${state === CellState.visible ? "visible" : ""} value-${value} ${red ? "red" : ""} ${enabled === true ? "enabled" : ""}`}
+            className={`ms-button ${state === CellState.visible ? "visible" : ""} value-${value} ${red ? "red" : ""} ${enabled === true ? "enabled" : ""}`}
             onClick={onClick(row, col)}
             onContextMenu={onContext(row, col)}
             >

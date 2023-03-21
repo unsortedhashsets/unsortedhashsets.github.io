@@ -26,7 +26,7 @@ const Minesweeper: React.FC = () => {
                 setFace(Face.smile);
             };
             // add event listener to buttons find by class Button
-            const Body = document.getElementsByClassName("Body")[0];
+            const Body = document.getElementsByClassName("ms-body")[0];
 
             Body.addEventListener("mouseover", handleMouseDown);
             Body.addEventListener("mouseout", handleMouseUp);
@@ -173,17 +173,17 @@ const Minesweeper: React.FC = () => {
     ));}
         
     return (
-        <div className="App">
-            <div className="Header">
+        <div className="ms-app">
+            <div className="ms-header">
                 <NumberDisplay value={mines} />
-                <div className="Face">
+                <div className="ms-face">
                     <span role="img" arial-label="face" onClick={handleFaceClick}>
                         {face}
                     </span>
                 </div>
                 <NumberDisplay value={time} />
             </div>
-            <div className="Body">
+            <div className="ms-body">
                 {renderCells()}
             </div>
         </div>
