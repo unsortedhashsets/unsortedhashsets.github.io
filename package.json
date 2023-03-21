@@ -1,7 +1,5 @@
-
-
 {
-  "homepage" : "https://unsortedhashsets.github.io",
+  "homepage": "https://unsortedhashsets.github.io",
   "name": "minesweeper",
   "version": "0.1.0",
   "private": true,
@@ -16,6 +14,8 @@
     "node-sass": "^8.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-draggable": "^4.4.5",
+    "react-resizable": "^3.0.4",
     "react-scripts": "5.0.1",
     "sass": "^1.59.2",
     "typescript": "^4.4.2",
@@ -48,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-resizable": "^3.0.3",
     "gh-pages": "^5.0.0"
   }
 }
