@@ -20,7 +20,6 @@ class Logger implements Logger {
             localStorage.setItem("UUID", this.UUID);
             this.ID = 0;
             localStorage.setItem("ID", String(this.ID));
-            this.warn(`New UUID generated - ${this.UUID}`);
         } else {
             this.UUID = localStorage.getItem("UUID") as string;
             if (!localStorage.getItem("ID")) {
@@ -34,6 +33,9 @@ class Logger implements Logger {
     }
 
     public log(message: string) {
+        if (this.ID === 0) {
+            this.warn(`New UUID generated - ${this.UUID}`);
+        }
         this.logtail.log(`${this.UUID} - ${this.ID} - ${message}`);
         this.ID++;
         localStorage.setItem("ID", String(this.ID));
