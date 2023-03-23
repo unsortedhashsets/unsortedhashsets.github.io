@@ -18,12 +18,13 @@ class Logger implements Logger {
         if (!localStorage.getItem("UUID")) {
             this.UUID = uuid();
             localStorage.setItem("UUID", this.UUID);
-            this.ID = 1;
+            this.ID = 0;
             localStorage.setItem("ID", String(this.ID));
+            this.warn(`New UUID generated - ${this.UUID}`);
         } else {
             this.UUID = localStorage.getItem("UUID") as string;
             if (!localStorage.getItem("ID")) {
-                this.ID = 1;
+                this.ID = 0;
                 localStorage.setItem("ID", String(this.ID));
             } else {
                 this.ID = Number(localStorage.getItem("ID"));
@@ -34,6 +35,12 @@ class Logger implements Logger {
 
     public log(message: string) {
         this.logtail.log(`${this.UUID} - ${this.ID} - ${message}`);
+        this.ID++;
+        localStorage.setItem("ID", String(this.ID));
+    }
+
+    public warn(message: string) {
+        this.logtail.warn(`${this.UUID} - ${this.ID} - ${message}`);
         this.ID++;
         localStorage.setItem("ID", String(this.ID));
     }
