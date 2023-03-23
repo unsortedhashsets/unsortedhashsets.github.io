@@ -27,6 +27,7 @@ class Logger implements Logger {
                 localStorage.setItem("ID", String(this.ID));
             } else {
                 this.ID = Number(localStorage.getItem("ID"));
+                this.ID--;
             }
         }
     }
