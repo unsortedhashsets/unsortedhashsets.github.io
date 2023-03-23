@@ -45,3 +45,4 @@ Thumbs.db
 old1/
 old2/
 build/
+.env

@@ -3,6 +3,7 @@ import { disableAllCells, flagUnsafeCells, generateCells, openMultipleCells, sho
 import Button from "./Button";
 import NumberDisplay from "./NumberDisplay";
 import { CellState, CellValue, Face } from "./types";
+import { logger } from "../../App";
 
 import "./Minesweeper.scss";
 import { NO_OF_MINES } from "./constants";
@@ -55,15 +56,17 @@ const Minesweeper: React.FC = () => {
         if (hasLost) {
             setLive(false);
             setFace(Face.lost);
+            logger.log(`lost the game with result: ${time} seconds and mines: ${mines} on field`);
         }
-    }, [hasLost]);
+    }, [hasLost, mines, time]);
 
     useEffect(() => {
         if (hasWon) {
             setLive(false);
             setFace(Face.won);
+            logger.log(`won the game with result: ${time} seconds`);
         }
-    }, [hasWon]);
+    }, [hasWon, time]);
 
     const handleFaceClick = (): void => {
         setLive(false);

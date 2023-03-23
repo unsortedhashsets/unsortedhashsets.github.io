@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Draggable from "react-draggable";
+import { logger } from "../../App";
 
 import "./Window.scss";
 
@@ -9,6 +10,7 @@ interface WindowProps {
   }
 
 const Window: React.FC<WindowProps> = ({children, title}) => {
+    logger.log(`Window oppened with: ${title}`);
     const [window, setWindow] = useState(true);
 
     const handleCloseWindow = () => {
