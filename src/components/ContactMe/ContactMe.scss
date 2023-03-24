@@ -1,0 +1,70 @@
+.tw-window {
+  position: relative;
+  border-radius: 1rem 1rem 0 0;
+  border: 1px solid #424242;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+
+  >.tw-header {
+      display: flex;
+      position: relative;
+      width: 100%;
+      height: 2.4rem;
+      line-height: 2.4rem;
+      color: #424242;
+      background-color: #bdbdbd;
+      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      cursor: pointer;
+      user-select: none;
+
+      >.tw-draggable {
+        cursor: move;
+      }
+
+      >.tw-title {
+        flex-grow: 10;
+        padding: 0 1rem;
+        overflow: hidden;
+      }
+
+      >.tw-buttons {
+        display: flex;
+        flex-shrink: 0;
+        padding: 0 0.5rem;
+
+        >.tw-button {
+          width: 2.4rem;
+          height: 2.4rem;
+          transition: opacity 0.3s;
+          mask-size: 50%;
+          mask-position: center;
+          mask-repeat: no-repeat;
+          background-color: #424242;
+          opacity: 0.5;
+          cursor: pointer;
+
+          &.tw-minimize {
+            mask-image: (url(./assets/border-bottom.svg));
+          }
+
+          &.tw-maximize {
+            mask-image: (url(./assets/border-all.svg));
+          }
+
+          &.tw-close {
+            mask-image: (url(./assets/close.svg));
+          }
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+  >.tw-body {
+      color: #9e9e9e;
+      background-color: #212121;
+  }
+}
