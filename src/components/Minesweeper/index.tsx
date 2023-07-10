@@ -119,7 +119,7 @@ const Minesweeper: React.FC = () => {
             }
         }
 
-        if (!safeOpenCellsExist) {
+        if (!safeOpenCellsExist && mines === 0) {
             setHasWon(true);
             setCells(flagUnsafeCells(newCells));
             setMines(0);
