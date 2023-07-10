@@ -1,5 +1,10 @@
+.tw-container {
+  display: inline-block;
+}
+
 .tw-window {
-  position: relative;
+  position: absolute;
+  display: inline-block; // Allow the window to shrink to fit its content
   border-radius: 1rem 1rem 0 0;
   border: 1px solid #424242;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);

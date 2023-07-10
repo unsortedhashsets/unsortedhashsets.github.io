@@ -1,0 +1,46 @@
+.Desktop {
+    height: 100vh; // Set the height to cover the full viewport height
+    width: 100vw; // Set the width to cover the full viewport width
+  }
+  
+
+.DesktopGrid {
+    background-image: url(https://s3.eu-west-1.amazonaws.com/unsortedhashsets.github.io/5e87e737ee7085fccd02c10d_pattern-grey.svg);
+    background-position: 0px 0px;
+    background-size: 6px;
+    height: calc(100% - 24px);
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 74px);
+    grid-template-rows: repeat(auto-fill, 70px);
+    grid-auto-flow: column;
+    padding-top: 6px;
+    gap: 28px 1px;
+
+    .DesktopIcon {
+        width: 74px;
+        height: 70px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    
+        img {
+          width: 32px;
+          height: 32px;
+        }
+    
+        span {
+          margin-top: 4px;
+          font-size: 10px;
+          color: #000000;
+          text-align: center;
+        }
+    }
+}
+
+.DesktopToolbar {
+    background-color: black;
+    height: 24px; // Set the height to 48 pixels
+}

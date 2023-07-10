@@ -3,7 +3,7 @@ import { disableAllCells, flagUnsafeCells, generateCells, openMultipleCells, sho
 import Button from "./Button";
 import NumberDisplay from "./NumberDisplay";
 import { CellState, CellValue, Face } from "./types";
-import { logger } from "../../App";
+import { logger } from "../../Main";
 
 import "./Minesweeper.scss";
 import { NO_OF_MINES } from "./constants";

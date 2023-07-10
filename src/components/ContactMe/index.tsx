@@ -1,6 +1,6 @@
 import React from 'react';
 import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
-import { sender } from "../../App";
+import { sender } from "../../Main";
 
 const ContactMe : React.FC = () => {
 

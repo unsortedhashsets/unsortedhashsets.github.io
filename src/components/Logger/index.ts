@@ -36,13 +36,18 @@ class Logger implements Logger {
         if (this.ID === 0) {
             this.warn(`New UUID generated - ${this.UUID}`);
         }
-        this.logtail.log(`${this.UUID} - ${this.ID} - ${message}`);
+        let text = `${this.UUID} - ${this.ID} - ${message}`;
+        console.log(text);
+        this.logtail.log(text);
         this.ID++;
+
         localStorage.setItem("ID", String(this.ID));
     }
 
     public warn(message: string) {
-        this.logtail.warn(`${this.UUID} - ${this.ID} - ${message}`);
+        let text = `${this.UUID} - ${this.ID} - ${message}`;
+        console.warn(text);
+        this.logtail.warn(text);
         this.ID++;
         localStorage.setItem("ID", String(this.ID));
     }
