@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Desktop.scss';
 import DesktopIcon from './components/DesktopIcon';
 import Window from './components/Window';
@@ -16,6 +16,7 @@ const Desktop: React.FC<DesktopProps> = ({ children }) => {
   const [isWindowOpen, setWindowOpen] = useState<{ [key: number]: boolean }>(
     {}
   );
+  const [programButtonIndex, setProgramButtonIndex] = useState<number[]>([]);
 
   const handleZIndexChange = (newValue: number) => {
     setWindowsZIndex(newValue);
@@ -27,6 +28,23 @@ const Desktop: React.FC<DesktopProps> = ({ children }) => {
       [index]: value,
     }));
   };
+
+  useEffect(() => {
+    setProgramButtonIndex((prevIndex) => {
+      const updatedIndex = [...prevIndex];
+
+      for (let i = 0; i < children.length; i++) {
+        if (isWindowOpen[i] && !updatedIndex.includes(i)) {
+          updatedIndex.push(i);
+        } else if (!isWindowOpen[i] && updatedIndex.includes(i)) {
+          const indexToRemove = updatedIndex.indexOf(i);
+          updatedIndex.splice(indexToRemove, 1);
+        }
+      }
+
+      return updatedIndex;
+    });
+  }, [children.length, isWindowOpen]);
 
   const handleIconDoubleClick = (
     child: React.ReactElement<AppProps>,
@@ -47,27 +65,41 @@ const Desktop: React.FC<DesktopProps> = ({ children }) => {
   return (
     <div className='Desktop'>
       <div className='DesktopGrid'>
-        {children.map((child, index) => (
-          <div key={index}>
-            {isWindowOpen[index] && (
-              <Window
+        {children.map((child, index) => {
+          const isWindowVisible = isWindowOpen[index];
+          return (
+            <div key={index}>
+              {isWindowVisible && (
+                <Window
+                  children={child}
+                  onClose={() => handleCloseWindow(child, index)}
+                  isOpen={isWindowVisible}
+                  title={child.props.title}
+                  windowsZIndex={windowsZIndex}
+                  handleZIndexChange={handleZIndexChange}
+                />
+              )}
+              <DesktopIcon
+                onDoubleClick={() => handleIconDoubleClick(child, index)}
                 children={child}
-                onClose={() => handleCloseWindow(child, index)}
-                isOpen={isWindowOpen[index]}
-                title={child.props.title}
-                windowsZIndex={windowsZIndex}
-                handleZIndexChange={handleZIndexChange}
               />
-            )}
-            <DesktopIcon
-              onDoubleClick={() => handleIconDoubleClick(child, index)}
-              children={child}
-            />
-          </div>
-        ))}
+            </div>
+          );
+        })}
       </div>
-      <div className='DesktopToolbar'>
-        {/* Content of the DesktopToolbar component */}
+
+      <div className='ProgramButtons'>
+        {programButtonIndex.map((index) => {
+          if (isWindowOpen[index]) {
+            const child = children[index];
+            return (
+              <span key={`${index}-${child.props.title}`}>
+                <button>{child.props.title}</button>
+              </span>
+            );
+          }
+          return null;
+        })}
       </div>
     </div>
   );

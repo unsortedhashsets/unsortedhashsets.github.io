@@ -13,6 +13,7 @@ logger.log('App started');
 
 const AppArray = [
   <App
+    key='minesweeper'
     title={'Minesweeper-1'}
     icon={
       'https://s3.eu-west-1.amazonaws.com/unsortedhashsets.github.io/minesweeper.icon.png'
@@ -21,13 +22,12 @@ const AppArray = [
     <Minesweeper />
   </App>,
   //<App
+  //  key='contactMe'
   //  title={'ContactMe'}
-  //  icon={
-  //    'OMG I DONT HAVE AN ICON FOR THIS YET'
-  //  }
+  //  icon={'OMG I DONT HAVE AN ICON FOR THIS YET'}
   //>
-  //  <ContactMe />
-  //</App>
+  // <ContactMe />
+  //</App>,
 ];
 
 const Main: React.FC = () => {
