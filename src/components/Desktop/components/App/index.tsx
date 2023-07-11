@@ -1,13 +1,13 @@
+import { FC, ReactNode } from 'react';
+
 export interface AppProps {
-    children: React.ReactNode;
-    title: string;
-    icon: string;
-  }
+  children: ReactNode;
+  title: string;
+  icon: string;
+}
 
-  const App: React.FC<AppProps> = ({ children}) => {
-    return (
-        <div> {children}</div>
-       );
-  }
+const App: FC<AppProps> = ({ children }) => {
+  return <div>{children}</div>;
+};
 
-  export default App;
+export default App;
