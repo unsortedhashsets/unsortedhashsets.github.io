@@ -6,7 +6,9 @@ import './Window.scss';
 interface WindowProps {
   children: React.ReactNode;
   onClose: () => void;
+  onMinimize: () => void;
   isOpen: boolean;
+  isMinimized: boolean;
   title: string;
   handleZIndexChange: (newValue: number) => void;
   windowsZIndex: number;
@@ -15,7 +17,9 @@ interface WindowProps {
 const Window: React.FC<WindowProps> = ({
   children,
   onClose,
+  onMinimize,
   isOpen,
+  isMinimized,
   title,
   handleZIndexChange,
   windowsZIndex,
@@ -42,7 +46,7 @@ const Window: React.FC<WindowProps> = ({
   };
 
   const handleMinimizeWindow = () => {
-    console.log('Minimize');
+    onMinimize();
   };
 
   return isOpen ? (
@@ -50,7 +54,10 @@ const Window: React.FC<WindowProps> = ({
       <div
         className='tw-window'
         id={`tw-window-${title}`}
-        style={{ zIndex: currentZIndex }}
+        style={{
+          zIndex: currentZIndex,
+          display: isMinimized ? 'none' : 'inline-block',
+        }}
       >
         <div className='tw-header'>
           <div className='tw-title tw-draggable'>{title}</div>
