@@ -1,14 +1,15 @@
 .Desktop {
-    height: 100vh; // Set the height to cover the full viewport height
-    width: 100vw; // Set the width to cover the full viewport width
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
   }
-  
 
 .DesktopGrid {
     background-image: url(https://s3.eu-west-1.amazonaws.com/unsortedhashsets.github.io/5e87e737ee7085fccd02c10d_pattern-grey.svg);
     background-position: 0px 0px;
     background-size: 6px;
-    height: calc(100% - 24px);
+    height: 96%;
     inset: 0;
     display: grid;
     grid-template-columns: repeat(auto-fill, 74px);
@@ -25,7 +26,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-    
+      
         img {
           width: 32px;
           height: 32px;
@@ -41,6 +42,8 @@
 }
 
 .DesktopToolbar {
-    background-color: black;
-    height: 24px; // Set the height to 48 pixels
+  width: 100%;
+  height: 4%;
+  margin: 0;
+  padding: 0;
 }

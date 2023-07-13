@@ -136,13 +136,17 @@ const Desktop: React.FC<DesktopProps> = ({ children }) => {
         })}
       </div>
 
-      <div className='ProgramButtons'>
+      <div className='DesktopToolbar'>
         {programButtonIndex.map((index) => {
           if (isWindowOpen[index]) {
             const child = children[index];
             return (
               <span key={`${index}-${child.props.title}`}>
                 <Button
+                  style={{
+                    height: '100%',
+                    minWidth: '30px',
+                  }}
                   variant='contained'
                   onClick={() => handleMinimizeWindow(child, index, false)}
                   aria-controls={openContextMenu ? 'basic-menu' : undefined}

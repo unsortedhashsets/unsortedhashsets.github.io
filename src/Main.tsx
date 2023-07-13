@@ -1,5 +1,4 @@
 import Logger from './components/Logger';
-import './Main.scss';
 import Minesweeper from './components/Minesweeper';
 //import ContactMe from './components/ContactMe';
 import Sender from './components/ContactMe/Utils';
